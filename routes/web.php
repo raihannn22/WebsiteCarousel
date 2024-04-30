@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TampilanController;
+use App\Http\Controllers\LoginController;
+use App\Http\Middleware\Authenticate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/index', function (){
+    return view ('tampilan.carousel');
+})->name('index');
+
+
+Route::get('/login', [LoginController::class, 'index'])->name('login') ;
+Route::post('/login', [LoginController::class, 'login']);
+
+
+Route::get('/admin', function (){
+    return view ('tampilan.admin.dashboard');
+})->name('admin')->middleware('auth');
+
