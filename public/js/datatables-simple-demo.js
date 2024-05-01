@@ -7,3 +7,13 @@ window.addEventListener('DOMContentLoaded', event => {
         new simpleDatatables.DataTable(datatablesSimple);
     }
 });
+
+new DataTable('#example', {
+    layout: {
+        bottomEnd: {
+            paging: {
+                boundaryNumbers: false
+            }
+        }
+    }
+});

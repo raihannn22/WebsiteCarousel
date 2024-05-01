@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container mt-5">
+    <div class="container mt-5 min h-75">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 @if (session()->has ('loginError'))

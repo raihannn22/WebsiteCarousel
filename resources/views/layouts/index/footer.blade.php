@@ -1,5 +1,5 @@
  <!-- FOOTER -->
- <div class="fixed-bottom">
+ <div class="">
 
     <footer class="container">
         <p class="float-end"><a href="#">Back to top</a></p>
@@ -7,3 +7,12 @@
     </footer>
 
  </div>
+
+ <style>
+    footer {
+    clear: both;
+    position: relative;
+
+    margin-top: 300px;
+}
+ </style>
