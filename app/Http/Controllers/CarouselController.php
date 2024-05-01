@@ -34,7 +34,7 @@ class CarouselController extends Controller
         // dd($imageName);
         $imageExt = $uploadImage->getClientOriginalExtension();
         $storeImage = $imageName . time() . "." . $imageExt;
-        $request->image->move(public_path('/images/'), $storeImage);
+        $request->image->move(public_path('images/carousels'), $storeImage);
 
         $carousel = Carousel::create([
             'image' => $storeImage,
@@ -67,7 +67,7 @@ class CarouselController extends Controller
         ]);
 
 
-        $destination = 'images/'. $carousel->image;
+        $destination = 'images/carousels/'.$carousel->image;
         if (File::exists($destination))
             {
                 File::delete($destination);
@@ -78,7 +78,7 @@ class CarouselController extends Controller
         // dd($imageName);
         $imageExt = $uploadImage->getClientOriginalExtension();
         $storeImage = $imageName . time() . "." . $imageExt;
-        $request->image->move(public_path('/images/'), $storeImage);
+        $request->image->move(public_path('images/carousels'), $storeImage);
 
         $carousel -> update([
             'image' => $storeImage,
@@ -87,5 +87,19 @@ class CarouselController extends Controller
         ]);
 
         return redirect()->back()->with('message', ' Upload Succesfully');
+    }
+
+
+    public function delete($id){
+
+        $carousel = Carousel::find($id);
+        $destination = 'images/carousels/'.$carousel->image;
+        if (File::exists($destination))
+            {
+                File::delete($destination);
+            }
+        $carousel->delete();
+
+        return redirect()->back()->with('message', 'Hapus data Berhasil');
     }
 }

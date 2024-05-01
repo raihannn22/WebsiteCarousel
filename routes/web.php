@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\FiturController;
@@ -21,10 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', function (){
-    return view ('tampilan.carousel');
-})->name('index');
-
+Route::get('/index', [IndexController::class, 'index'])->name('index') ;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login') ;
 Route::post('/login', [LoginController::class, 'login']);
@@ -43,6 +41,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');
+
+        Route::delete('/{id}', 'delete')->name('delete');
     });
 
 

@@ -21,7 +21,7 @@
         <div class="mb-3">
             <label for="image" class="form-label">Update Gambar</label>
             <input type="file" class="form-control-file" id="image" name="image">
-            <img src="{{asset('images/'.$carousel->image)}}" alt="" style="width: 70px">
+            <img src="{{asset('images/carousels/'.$carousel->image)}}" alt="" style="width: 70px">
         </div>
         <button class="btn btn-primary">Submit</button>
     </form>

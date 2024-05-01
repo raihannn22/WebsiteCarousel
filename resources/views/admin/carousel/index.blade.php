@@ -8,6 +8,9 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
+            @if (session()->has ('message'))
+            <div class="alert alert-success mt-5"> {{ session()->get('message')}}</div>
+            @endif
 
             <div class="card mb-4">
                 <div class="card-header">
@@ -36,9 +39,9 @@
                                 <th scope="row"> {{$loop->iteration}} </th>
                                 <td> {{$carousel->judul}} </td>
                                 <td> {{$carousel->caption}} </td>
-                                <td> <img src="{{asset('images/'.$carousel->image)}}" alt="" style="width: 70px"></td>
+                                <td> <img src="{{asset('images/carousels/'.$carousel->image)}}" alt="" style="width: 70px"></td>
                                 <td>
-                                    <form action="" method="post">
+                                    <form action="{{route ('carousel.delete', $carousel->id)}}" method="post" onsubmit="return confirm('Apakah anda yakin untuk hapus data?')">
                                         @csrf
                                         @method('delete')
                                         <a href="{{route ('carousel.edit', $carousel->id)}}" class="btn btn-sm btn-warning">Edit</a>
