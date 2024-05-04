@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Carousel;
+use App\Models\Detail;
 
 class IndexController extends Controller
 {
@@ -11,6 +12,8 @@ class IndexController extends Controller
     {
         $carousels = Carousel::all();
 
-        return view ('tampilan.carousel',  compact('carousels'));
+        $details = Detail::all();
+
+        return view ('tampilan.carousel',  compact('carousels'), compact('details'));
     }
 }

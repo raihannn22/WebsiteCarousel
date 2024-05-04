@@ -17,7 +17,7 @@
 
                 <div class="card-body">
 
-                    <a href="" class="btn btn-primary mb-3">Create new</a>
+                    <a href="{{route('detail.form')}}" class="btn btn-primary mb-3">Create new</a>
 
                     <table id="datatablesSimple">
                         <thead>
@@ -29,35 +29,39 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No.</th>
-                                <th>Judul</th>
-                                <th>Caption</th>
-                                <th>Gambar</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
 
                         <tbody>
+                            @foreach ($details as $detail)
                             <tr>
-                                <th> 1 </th>
-                                <th> 1 </th>
-                                <th> 1 </th>
-                                <th> 1 </th>
-                                <th>
-                                    <form action="" method="post">
+                                <th scope="row"> {{$loop->iteration}} </th>
+                                <td> {{$detail->judul}} </td>
+                                <td> {{$detail->caption}} </td>
+                                <td> <img src="{{asset('images/details/'.$detail->image)}}" alt="" style="width: 70px"></td>
+                                <td>
+                                    <form action="{{route('detail.delete', $detail->id )}}" method="post" onsubmit="return confirm('Apakah anda yakin untuk hapus data?')">
                                         @csrf
                                         @method('delete')
-                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                        <a href="{{route('detail.edit', $detail->id )}}" class="btn btn-sm btn-warning mb-2">Edit</a> <br>
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
-                            </td></th>
+                                </td></th>
                             </tr>
-                        </tbody>
+                            @endforeach
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section('script')
+@if (session()->has ('message'))
+    <script>
+        toastr.options = {
+                    "closeButton": true,
+                    "positionClass": "toast-bottom-right",
+                };
+        toastr.success('{{session()->get('message')}}', 'Sistem', {timeOut: 5000})
+    </script>
+@endif
+@endsection

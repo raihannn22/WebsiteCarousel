@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/carousel')->controller(CarouselController::class)->name('carousel.')->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');
+
         Route::get('/form', 'form')->name('form');
         Route::post('/create', 'create')->name('create');
 
@@ -46,10 +47,32 @@ Route::middleware('auth')->group(function () {
     });
 
 
-    Route::get('/detail', [DetailController::class, 'index'])->name('detail');
 
+
+    Route::prefix('/detail')->controller(DetailController::class)->name('detail.')->group(function () {
+        Route::get('/dashboard',  'dashboard')->name('dashboard');
+
+        Route::get('/form', 'form')->name('form');
+        Route::post('/create', 'create')->name('create');
+
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+
+        Route::delete('/{id}', 'delete')->name('delete');
+    });
 
     Route::get('/fitur', [FiturController::class, 'index'])->name('fitur');
 
+    Route::prefix('/fitur')->controller(FiturController::class)->name('fitur.')->group(function () {
+        Route::get('/dashboard',  'dashboard')->name('dashboard');
+
+        Route::get('/form', 'form')->name('form');
+        Route::post('/create', 'create')->name('create');
+
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+
+        Route::delete('/{id}', 'delete')->name('delete');
+    });
 
 });

@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Buat data Carousel baru</h1>
-    <form action="{{route ('carousel.create')}}" method="post" enctype="multipart/form-data">
+    <h1 class="mt-4">Buat data Fitur baru</h1>
+    <form action="{{route('fitur.create')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">

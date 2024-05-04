@@ -47,7 +47,7 @@ class CarouselController extends Controller
         //     'judul' => $request->judul,
         // ]);
 
-        return redirect()->back()->with('message', ' Upload Succesfully');
+        return redirect()->route('carousel.dashboard')->with('message', ' Upload data carousel berhasil');
     }
 
     public function edit($id)
@@ -61,8 +61,6 @@ class CarouselController extends Controller
     {
         $carousel = Carousel::find($id);
         $request->validate([
-            'judul' => 'required',
-            'caption' => 'required',
             'image' => 'required|mimes:jpeg,png|max:2000',
         ]);
 
@@ -86,7 +84,7 @@ class CarouselController extends Controller
             'judul' => $request->judul,
         ]);
 
-        return redirect()->back()->with('message', ' Upload Succesfully');
+        return redirect()->route('carousel.dashboard')->with('message', 'Edit data carousel berhasil');
     }
 
 
@@ -100,6 +98,6 @@ class CarouselController extends Controller
             }
         $carousel->delete();
 
-        return redirect()->back()->with('message', 'Hapus data Berhasil');
+        return redirect()->back()->with('message', 'Hapus data carousel berhasil');
     }
 }

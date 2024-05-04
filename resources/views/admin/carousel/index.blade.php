@@ -8,9 +8,6 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
-            @if (session()->has ('message'))
-            <div class="alert alert-success mt-5"> {{ session()->get('message')}}</div>
-            @endif
 
             <div class="card mb-4">
                 <div class="card-header">
@@ -22,7 +19,7 @@
 
                     <a href="{{route ('carousel.form')}}" class="btn btn-primary mb-3">Create new</a>
 
-                    <table class="table">
+                    <table id="datatablesSimple">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -32,9 +29,18 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        <tfoot>
+                            <tr>
+                                <th>No.</th>
+                                <th>Judul</th>
+                                <th>Caption</th>
+                                <th>Gambar</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
 
-                        @foreach ($carousels as $carousel)
                         <tbody>
+                            @foreach ($carousels as $carousel)
                             <tr>
                                 <th scope="row"> {{$loop->iteration}} </th>
                                 <td> {{$carousel->judul}} </td>
@@ -44,7 +50,7 @@
                                     <form action="{{route ('carousel.delete', $carousel->id)}}" method="post" onsubmit="return confirm('Apakah anda yakin untuk hapus data?')">
                                         @csrf
                                         @method('delete')
-                                        <a href="{{route ('carousel.edit', $carousel->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                                        <a href="{{route ('carousel.edit', $carousel->id)}}" class="btn btn-sm btn-warning mb-2">Edit</a> <br>
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                 </td></th>
@@ -57,3 +63,15 @@
         </div>
     </div>
 </div>
+
+@section('script')
+@if (session()->has ('message'))
+    <script>
+        toastr.options = {
+                    "closeButton": true,
+                    "positionClass": "toast-bottom-right",
+                };
+        toastr.success('{{session()->get('message')}}', 'Sistem', {timeOut: 5000})
+    </script>
+@endif
+@endsection

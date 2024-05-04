@@ -10,14 +10,14 @@
                 <div class="sb-sidenav-menu-heading">Edit</div>
 
                 <a class="nav-link" href="{{route ('carousel.dashboard')}}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-film"></i></div>
                     Carousel
                 </a>
-                <a class="nav-link" href="{{route ('detail')}}">
+                <a class="nav-link" href="{{route ('detail.dashboard')}}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-info"></i></div>
                     Detail
                 </a>
-                <a class="nav-link" href="{{route ('fitur')}}">
+                <a class="nav-link" href="{{route ('fitur.dashboard')}}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard"></i></div>
                     Fitur
                 </a>
