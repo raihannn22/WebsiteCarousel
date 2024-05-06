@@ -4,10 +4,15 @@
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <div class="container-fluid px-4">
+            
             <h1 class="mt-4">Carousel</h1>
+
+            <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item"><a href="{{route('admin')}}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Carousel</li>
             </ol>
+            </nav>
 
             <div class="card mb-4">
                 <div class="card-header">

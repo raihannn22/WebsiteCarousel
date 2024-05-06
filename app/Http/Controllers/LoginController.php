@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Carousel;
+use App\Models\Detail;
+use App\Models\Fitur;
 
 class LoginController extends Controller
 {
@@ -37,5 +40,18 @@ class LoginController extends Controller
 
         return redirect ('index');
 
+    }
+
+    public function dashboard(){
+        $jumlahcarousels = Carousel::all()->count();
+        $jumlahdetails = Detail::all()->count();
+        $jumlahfiturs = Fitur::all()->count();
+
+        return view('admin.dashboard', compact([
+           'jumlahcarousels',
+           'jumlahdetails',
+           'jumlahfiturs',
+           ]
+        ));
     }
 }

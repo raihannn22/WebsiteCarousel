@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/coba', function () {
+    return view('tampilan.detailproduct');
+});
+
 Route::get('/index', [IndexController::class, 'index'])->name('index') ;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login') ;
@@ -30,9 +34,8 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/admin', function (){
-        return view ('admin.dashboard');
-    })->name('admin');
+    Route::get('/admin', [LoginController::class, 'dashboard'])->name('admin') ;
+
 
     Route::prefix('/carousel')->controller(CarouselController::class)->name('carousel.')->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');

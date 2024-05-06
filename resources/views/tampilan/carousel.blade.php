@@ -61,8 +61,6 @@
             </div><!-- /.col-lg-4 -->
             @endforeach
             @endif
-
-
     </div><!-- /.row -->
 
 
