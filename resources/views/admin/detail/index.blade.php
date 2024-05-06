@@ -46,7 +46,8 @@
                                         @csrf
                                         @method('delete')
                                         <a href="{{route('detail.edit', $detail->id )}}" class="btn btn-sm btn-warning mb-2">Edit</a> <br>
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-sm btn-danger mb-2">Delete</button><br>
+                                        <a href="{{route('detail.postform')}}" class="btn btn-sm btn-primary ">buat post</a>
                                     </form>
                                 </td></th>
                             </tr>

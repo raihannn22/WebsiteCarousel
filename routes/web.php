@@ -62,6 +62,9 @@ Route::middleware('auth')->group(function () {
         Route::put('/{id}', 'update')->name('update');
 
         Route::delete('/{id}', 'delete')->name('delete');
+
+        Route::get('/postform', 'postform')->name('postform');
+        Route::put('/{id}/createpost', 'createpost')->name('createpost');
     });
 
     Route::get('/fitur', [FiturController::class, 'index'])->name('fitur');

@@ -13,5 +13,14 @@ class Detail extends Model
         'judul',
         'caption',
         'image',
+        'judulpost',
+        'harga',
+        'captionpost',
+        'map',
+        'imagesatu',
+        'imagedua',
+        'imagetiga',
+        'imageempat',
+
     ];
 }
