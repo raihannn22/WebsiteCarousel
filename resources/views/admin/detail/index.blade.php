@@ -54,6 +54,58 @@
                     </table>
                 </div>
             </div>
+
+
+             <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    List Post data Detail
+                </div>
+
+                <div class="card-body">
+
+                    <table id="datatablesSimples">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Post untuk detail dengan judul</th>
+                                <th>Judul Post</th>
+                                <th>Caption Post</th>
+                                <th>Harga</th>
+                                <th>Map</th>
+                                <th>Gambar Satu</th>
+                                <th>Gambar Dua</th>
+                                <th>Gambar Tiga</th>
+                                <th>Gambar Empat</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($details as $detail)
+                            <tr>
+                                <th scope="row"> {{$loop->iteration}} </th>
+                                <td> {{$detail->judul}} </td>
+                                <td> {{$detail->postDetail->postjudul}} </td>
+                                <td> {{$detail->postDetail->postcaption}} </td>
+                                <td> {{$detail->postDetail->harga}} </td>
+                                <td> {{$detail->postDetail->map}} </td>
+                                <td> <img src="{{asset('images/posts/'.$detail->postDetail->imagesatu)}}" alt="" style="width: 70px"></td>
+                                <td> <img src="{{asset('images/posts/'.$detail->postDetail->imagedua)}}" alt="" style="width: 70px"></td>
+                                <td> <img src="{{asset('images/posts/'.$detail->postDetail->imagetiga)}}" alt="" style="width: 70px"></td>
+                                <td> <img src="{{asset('images/posts/'.$detail->postDetail->imageempat)}}" alt="" style="width: 70px"></td>
+                                <td>
+                                    <form action="{{route('detail.delete', $detail->id )}}" method="post" onsubmit="return confirm('Apakah anda yakin untuk hapus data?')">
+                                        @csrf
+                                        @method('delete')
+                                        <a href="{{route('detail.editpost', $detail->id )}}" class="btn btn-sm btn-warning mb-2">Edit</a> <br>
+                                    </form>
+                                </td></th>
+                            </tr>
+                            @endforeach
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -24,9 +24,10 @@ Route::get('/', function () {
 
 Route::get('/coba', function () {
     return view('tampilan.detailproduct');
-});
+})->name('coba') ;
 
 Route::get('/index', [IndexController::class, 'index'])->name('index') ;
+Route::get('/{id}/post', [IndexController::class, 'post'])->name('post') ;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login') ;
 Route::post('/login', [LoginController::class, 'login']);
@@ -60,6 +61,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');
+
+        Route::get('/{id}/editpost', 'editpost')->name('editpost');
+        Route::put('/{id}/editpost', 'updatepost')->name('updatepost');
 
         Route::delete('/{id}', 'delete')->name('delete');
     });

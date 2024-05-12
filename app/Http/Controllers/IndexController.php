@@ -16,4 +16,11 @@ class IndexController extends Controller
 
         return view ('tampilan.carousel',  compact('carousels'), compact('details'));
     }
+
+        public function post($id)
+    {
+        $detail = Detail::find($id);
+
+        return view('tampilan.detailproduct', compact('detail'));
+    }
 }

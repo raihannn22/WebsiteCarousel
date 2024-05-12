@@ -37,10 +37,12 @@
 
                 <div class="mb-3">
                     <label for="image" class="form-label">Update Gambar</label>
-                    <input type="file" class="form-control-file" id="image" name="image" value="{{$detail->image}}">
+                    <input type="file" class="form-control-file" id="image" name="image" value="{{$detail->image}}" required>
                     <img src="{{asset('images/details/'.$detail->image)}}" alt="" style="width: 70px">
                 </div>
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary">Submit</button></br>
+                <label for="caption" class="form-label mt-4 fw-bold"><em>*jika anda tidak ingin edit gambar masukkan ulang file/gambar yang sama</em></label>
+
             </form>
         </div>
     </div>

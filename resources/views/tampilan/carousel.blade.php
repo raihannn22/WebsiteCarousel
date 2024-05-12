@@ -57,7 +57,7 @@
             <img src="{{asset('images/details/'.$detail->image)}}" class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
             <h2 class="fw-normal">{{$detail->judul}}</h2>
             <p>{{$detail->caption}}</p>
-            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="{{route('post', $detail->id )}}">View details &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
             @endforeach
             @endif

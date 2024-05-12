@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Product Card/Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
 
@@ -15,39 +15,40 @@
         <div class = "product-imgs">
           <div class = "img-display">
             <div class = "img-showcase">
-              <img src = "images/shoes_images/shoe_1.jpg" alt = "shoe image">
-              <img src = "images/shoes_images/shoe_2.jpg" alt = "shoe image">
-              <img src = "images/shoes_images/shoe_3.jpg" alt = "shoe image">
-              <img src = "images/shoes_images/shoe_4.jpg" alt = "shoe image">
+                <img src = "{{asset('images/posts/'.$detail->postDetail->imagesatu)}}" alt = "shoe image">
+                <img src = "{{asset('images/posts/'.$detail->postDetail->imagedua)}}" alt = "shoe image">
+                <img src = "{{asset('images/posts/'.$detail->postDetail->imagetiga)}}" alt = "shoe image">
+                <img src = "{{asset('images/posts/'.$detail->postDetail->imageempat)}}" alt = "shoe image">
             </div>
           </div>
+
           <div class = "img-select">
-            <div class = "img-item">
-              <a href = "#" data-id = "1">
-                <img src = "images/shoes_images/shoe_1.jpg" alt = "shoe image">
+            <div class = "img-item ratio ratio-1x1 object-fit-contain border rounded">
+              <a data-id = "1">
+                <img style="" src = "{{asset('images/posts/'.$detail->postDetail->imagesatu)}}" alt = "shoe image">
               </a>
             </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "2">
-                <img src = "images/shoes_images/shoe_2.jpg" alt = "shoe image">
+            <div class = "img-item ratio ratio-1x1 object-fit-contain border rounded">
+              <a data-id = "2">
+                <img style="" src = "{{asset('images/posts/'.$detail->postDetail->imagedua)}}" alt = "shoe image">
               </a>
             </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "3">
-                <img src = "images/shoes_images/shoe_3.jpg" alt = "shoe image">
+            <div class = "img-item ratio ratio-1x1 object-fit-contain border rounded">
+              <a data-id = "3">
+                <img style="" src = "{{asset('images/posts/'.$detail->postDetail->imagetiga)}}" alt = "shoe image">
               </a>
             </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "4">
-                <img src = "images/shoes_images/shoe_4.jpg" alt = "shoe image">
+            <div class = "img-item ratio ratio-1x1 object-fit-contain border rounded">
+              <a data-id = "4">
+                <img style=""src = "{{asset('images/posts/'.$detail->postDetail->imageempat)}}" alt = "shoe image">
               </a>
             </div>
           </div>
         </div>
         <!-- card right -->
         <div class = "product-content">
-          <h2 class = "product-title">nike shoes</h2>
-          <a href = "#" class = "product-link">visit nike store</a>
+          <h2 class = "product-title">{{$detail->postDetail->postjudul}}</h2>
+
           <div class = "product-rating">
             <i class = "fas fa-star"></i>
             <i class = "fas fa-star"></i>
@@ -58,14 +59,12 @@
           </div>
 
           <div class = "product-price">
-            <p class = "last-price">Old Price: <span>$257.00</span></p>
-            <p class = "new-price">New Price: <span>$249.00 (5%)</span></p>
+            <p class = "new-price">Harga: <span>{{$detail->postDetail->harga}}</span></p>
           </div>
 
           <div class = "product-detail">
-            <h2>about this item: </h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.orem ipsum dolor sit amet consectetur adipisiorem ipsum dolor sit amet consectetur adipisiorem ipsum dolor sit amet consectetur adipisiorem ipsum dolor sit amet consectetur adipisiorem ipsum dolor sit amet consectetur adipisiorem ipsum dolor sit amet consectetur adipisiorem ipsum dolor sit amet consectetur adipisiorem ipsum dolor sit amet consectetur adipisi Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</p>
+            <h2>Keterangan: </h2>
+            <p>{{$detail->postDetail->postcaption}}</p>
 
           </div>
            <div>
@@ -104,6 +103,6 @@
 
       </div>
     </div>
-  <script src="js/script.js"></script>
+  <script src="{{asset('js/script.js')}}"></script>
 
 @endsection
