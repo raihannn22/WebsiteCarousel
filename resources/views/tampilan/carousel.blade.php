@@ -24,7 +24,7 @@
         @else
         @foreach ($carousels as $carousel)
         <div class="carousel-item @if($loop->first) active @endif">
-            <img src="{{asset('images/carousels/'.$carousel->image)}}" alt="" class="{{$carousel->id}}--slide img-fluid w-100 h-100" alt="{{$carousel->id}} slide">
+            <img src="{{asset('images/carousels/'.$carousel->image)}}" alt="" class="{{$carousel->id}}--slide img-fluid" alt="{{$carousel->id}} slide">
             <div class="container">
                 <div class="carousel-caption text-start">
                     <h1>{{ $carousel->judul }}</h1>

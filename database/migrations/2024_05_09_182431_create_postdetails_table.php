@@ -17,11 +17,12 @@ return new class extends Migration
             $table->string('postjudul');
             $table->text('postcaption');
             $table->string('harga');
-            $table->string('map');
+            $table->string('map', 500);
             $table->string('imagesatu')->nullable();
             $table->string('imagedua')->nullable();
             $table->string('imagetiga')->nullable();
             $table->string('imageempat')->nullable();
+            $table->integer('stock');
             $table->foreign('detail_id')->references('id')->on('details')->onDelete('cascade');
             $table->timestamps();
         });

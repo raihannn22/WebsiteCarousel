@@ -58,7 +58,7 @@
 
                     <div class="mb-3">
                         <label for="caption" class="form-label">Caption Post</label>
-                        <textarea class="form-control" id="postcaption" name="postcaption" required></textarea>
+                        <textarea id="postcaption" name="postcaption"></textarea>
                     </div>
 
                     <div class="mb-3">
@@ -69,6 +69,11 @@
                     <div class="mb-3">
                         <label for="judul" class="form-label">Map</label>
                         <input type="text" class="form-control" id="map" name="map" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="judul" class="form-label">Stock :</label> <br>
+                        <input type="number" step="1" min="0"max="100" class="form-control-sm" id="stock" q name="stock" value="0" required>
                     </div>
 
                     <div class="mb-3">
@@ -91,12 +96,21 @@
                         <input type="file" class="form-control-file" id="imageempat" name="imageempat" required>
                     </div>
 
+
                     <button class="btn btn-primary">Submit</button>
                 </form>
         </div>
     </div>
 </div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#postcaption' ) )
+        .catch( error => {
+            console.error( error );
+        } );
 
+
+</script>
 @endsection
 
 

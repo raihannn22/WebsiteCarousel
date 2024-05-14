@@ -69,6 +69,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Post untuk detail dengan judul</th>
+                                <th>Stock</th>
                                 <th>Judul Post</th>
                                 <th>Caption Post</th>
                                 <th>Harga</th>
@@ -86,8 +87,9 @@
                             <tr>
                                 <th scope="row"> {{$loop->iteration}} </th>
                                 <td> {{$detail->judul}} </td>
+                                <td> {{$detail->postDetail->stock}} </td>
                                 <td> {{$detail->postDetail->postjudul}} </td>
-                                <td> {{$detail->postDetail->postcaption}} </td>
+                                <td> {!! $detail->postDetail->postcaption !!} </td>
                                 <td> {{$detail->postDetail->harga}} </td>
                                 <td> {{$detail->postDetail->map}} </td>
                                 <td> <img src="{{asset('images/posts/'.$detail->postDetail->imagesatu)}}" alt="" style="width: 70px"></td>
@@ -98,7 +100,8 @@
                                     <form action="{{route('detail.delete', $detail->id )}}" method="post" onsubmit="return confirm('Apakah anda yakin untuk hapus data?')">
                                         @csrf
                                         @method('delete')
-                                        <a href="{{route('detail.editpost', $detail->id )}}" class="btn btn-sm btn-warning mb-2">Edit</a> <br>
+                                        <a href="{{route('detail.editpost', $detail->id )}}" class="btn btn-sm btn-warning mb-2">Edit Kata</a> <br>
+                                        <a href="{{route('detail.editpostgambar', $detail->id )}}" class="btn btn-sm btn-info">EditGambar</a>
                                     </form>
                                 </td></th>
                             </tr>

@@ -10,14 +10,14 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{route('admin')}}">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{route('detail.dashboard')}}">Detail</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        <li class="breadcrumb-item active" aria-current="page">Edit kata</li>
     </ol>
     </nav>
 
     <div class="card mb-4">
         <div class="card-header">
             <i class="fa fa-pencil-square me-1"></i>
-            Edit data Detail
+            Edit kata data Detail
         </div>
 
         <div class="card-body">
@@ -32,7 +32,8 @@
 
                     <div class="mb-3">
                         <label for="caption" class="form-label">Caption Post</label>
-                        <textarea class="form-control" id="postcaption" name="postcaption" required>{{$detail->postDetail->postcaption}}</textarea>
+                        {{-- <div id="editor"> --}}
+                        <textarea class="form-control" id="editor" name="postcaption" required>{{$detail->postDetail->postcaption}}</textarea>
                     </div>
 
                     <div class="mb-3">
@@ -46,19 +47,26 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="image" class="form-label">Update Gambar</label>
-                        <input type="file" class="form-control-file" id="imagesatu" name="imagesatu" value="{{$detail->image}}" required>
-                        <img src="{{asset('images/posts/'.$detail->postDetail->imagesatu)}}" alt="" style="width: 70px">
+                        <label for="judul" class="form-label">Stock :</label> <br>
+                        <input type="number" step="1" min="0"max="100" class="form-control-sm" id="stock" q name="stock" value="{{$detail->postDetail->stock    }}" required>
                     </div>
 
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary">Submit</button> <br>
             </form>
 
             {{-- modal --}}
-            
+
         </div>
     </div>
 </div>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 @endsection
 

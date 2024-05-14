@@ -15,6 +15,7 @@ class Postdetail extends Model
         'postcaption',
         'harga',
         'map',
+        'stock',
         'imagesatu',
         'imagedua',
         'imagetiga',

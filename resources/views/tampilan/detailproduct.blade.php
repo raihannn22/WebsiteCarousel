@@ -10,7 +10,7 @@
 
 
    <div class="container">
-      <div class = "card">
+      <div class = "card mb-3 mt-4">
         <!-- card left -->
         <div class = "product-imgs">
           <div class = "img-display">
@@ -25,80 +25,79 @@
           <div class = "img-select">
             <div class = "img-item ratio ratio-1x1 object-fit-contain border rounded">
               <a data-id = "1">
-                <img style="" src = "{{asset('images/posts/'.$detail->postDetail->imagesatu)}}" alt = "shoe image">
+                <img class="rounded" src = "{{asset('images/posts/'.$detail->postDetail->imagesatu)}}" alt = "shoe image">
               </a>
             </div>
             <div class = "img-item ratio ratio-1x1 object-fit-contain border rounded">
               <a data-id = "2">
-                <img style="" src = "{{asset('images/posts/'.$detail->postDetail->imagedua)}}" alt = "shoe image">
+                <img class="rounded" src = "{{asset('images/posts/'.$detail->postDetail->imagedua)}}" alt = "shoe image">
               </a>
             </div>
             <div class = "img-item ratio ratio-1x1 object-fit-contain border rounded">
               <a data-id = "3">
-                <img style="" src = "{{asset('images/posts/'.$detail->postDetail->imagetiga)}}" alt = "shoe image">
+                <img class="rounded" src = "{{asset('images/posts/'.$detail->postDetail->imagetiga)}}" alt = "shoe image">
               </a>
             </div>
             <div class = "img-item ratio ratio-1x1 object-fit-contain border rounded">
               <a data-id = "4">
-                <img style=""src = "{{asset('images/posts/'.$detail->postDetail->imageempat)}}" alt = "shoe image">
+                <img class="rounded"src = "{{asset('images/posts/'.$detail->postDetail->imageempat)}}" alt = "shoe image">
               </a>
             </div>
           </div>
         </div>
         <!-- card right -->
         <div class = "product-content">
-          <h2 class = "product-title">{{$detail->postDetail->postjudul}}</h2>
+            <h2 class = "product-title">{{$detail->postDetail->postjudul}}</h2>
 
-          <div class = "product-rating">
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star-half-alt"></i>
-            <span>4.7(21)</span>
-          </div>
+            @if ($detail->postDetail->stock == 0)
 
-          <div class = "product-price">
-            <p class = "new-price">Harga: <span>{{$detail->postDetail->harga}}</span></p>
-          </div>
+            <label class="btn-sm px-2 mt-2 text-white bg-danger opacity-75 rounded"> out of stock</label>
+            @else
+            <label class="btn-sm px-2 mt-2 text-white opacity-75 bg-success rounded"> Stocked : {{$detail->postDetail->stock}}</label>
 
-          <div class = "product-detail">
-            <h2>Keterangan: </h2>
-            <p>{{$detail->postDetail->postcaption}}</p>
+            @endif
 
-          </div>
-           <div>
+            <div class = "product-price">
+                <p class = "new-price">Harga: <span>{{$detail->postDetail->harga}}</span></p>
+            </div>
 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15866.696172201573!2d106.7468216!3d-6.1743756!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f76b1fe6e679%3A0x9b4682b49b624c47!2sKontrakan%20H.%20Asnawi!5e0!3m2!1sid!2sid!4v1714948738375!5m2!1sid!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-           </div>
+            <div class = "product-detail">
+                <h2>Keterangan: </h2>
+                <p>{!! $detail->postDetail->postcaption !!}</p>
+
+            </div>
+            <div>
+
+                <iframe src="{{$detail->postDetail->map}}" width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
 
 
-          <div class = "purchase-info">
+            <div class = "purchase-info">
 
-            <button onclick=" window.open('https://wa.me/+62895363590329')" type = "button" class = "btn">
-               <i class = "fab fa-whatsapp fa-lg px-2"> </i>Hubungi Whatsapp
-            </button>
+                <button onclick=" window.open('https://wa.me/+62895363590329')" type = "button" class = "btn">
+                <i class = "fab fa-whatsapp fa-lg px-2"> </i>Hubungi Whatsapp
+                </button>
 
-          </div>
+            </div>
 
-          <div class = "social-links">
-            <p class="mt-3 px-2"> Share At: </p>
-            <a href = "#">
-              <i class = "fab fa-facebook-f"></i>
-            </a>
-            <a href = "#">
-              <i class = "fab fa-twitter"></i>
-            </a>
-            <a href = "#">
-              <i class = "fab fa-instagram"></i>
-            </a>
-            <a href = "#">
-              <i class = "fab fa-whatsapp"></i>
-            </a>
-            <a href = "#">
-              <i class = "fab fa-pinterest"></i>
-            </a>
-          </div>
+            <div class = "social-links">
+                <p class="mt-3 px-2"> Share At: </p>
+                <a href = "#">
+                <i class = "fab fa-facebook-f"></i>
+                </a>
+                <a href = "#">
+                <i class = "fab fa-twitter"></i>
+                </a>
+                <a href = "#">
+                <i class = "fab fa-instagram"></i>
+                </a>
+                <a href = "#">
+                <i class = "fab fa-whatsapp"></i>
+                </a>
+                <a href = "#">
+                <i class = "fab fa-pinterest"></i>
+                </a>
+            </div>
         </div>
 
       </div>

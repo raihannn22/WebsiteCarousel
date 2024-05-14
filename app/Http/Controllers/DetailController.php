@@ -22,9 +22,8 @@ class DetailController extends Controller
 
     public function create(Request $request)
     {
+
         $request->validate([
-            'judul' => 'required',
-            'caption' => 'required',
             'image' => 'required|mimes:jpeg,png|max:2000',
             'imagesatu' => 'required|mimes:jpeg,png|max:2000',
         ]);
@@ -85,14 +84,8 @@ class DetailController extends Controller
             'postcaption' => $request->postcaption,
             'map' => $request->map,
             'harga' => $request->harga,
+            'stock' => $request->stock,
         ]);
-
-
-
-        // detail::create([
-        //     'caption' => $request->caption,
-        //     'judul' => $request->judul,
-        // ]);
 
         return redirect()->route('detail.dashboard')->with('message', ' Upload data detail berhasil');
     }
@@ -156,15 +149,41 @@ class DetailController extends Controller
     public function updatepost(Request $request, $id)
     {
         $detail = Detail::find($id);
+
+        $detail->postDetail()->update([
+            'postjudul' => $request->postjudul,
+            'postcaption' => $request->postcaption,
+            'harga' => $request->harga,
+            'map' => $request->map,
+            'stock' => $request->stock,
+        ]);
+
+        return redirect()->route('detail.dashboard')->with('message', 'Edit Kata data detail post berhasil');
+    }
+
+    public function editpostgambar($id)
+    {
+        $detail = Detail::find($id);
+
+        return view('admin.detail.editpostgambar', compact('detail'));
+    }
+
+
+    public function updatepostgambar(Request $request, $id)
+    {
+       $detail = Detail::find($id);
         $request->validate([
             'imagesatu' => 'required|mimes:jpeg,png|max:2000',
+            'imagedua' => 'required|mimes:jpeg,png|max:2000',
+            'imagetiga' => 'required|mimes:jpeg,png|max:2000',
+            'imageempat' => 'required|mimes:jpeg,png|max:2000',
         ]);
 
 
-        $destination = 'images/posts/'.$detail->postDetail->imagesatu;
-        if (File::exists($destination))
+        $destination1 = 'images/posts/'.$detail->postDetail->imagesatu;
+        if (File::exists($destination1))
             {
-                File::delete($destination);
+                File::delete($destination1);
             }
         $uploadImage = $request->file('imagesatu');
         $imageNameWithExt = $uploadImage->getClientOriginalName();
@@ -174,15 +193,54 @@ class DetailController extends Controller
         $storeImage = $imageName . time() . "." . $imageExt;
         $request->imagesatu->move(public_path('images/posts'), $storeImage);
 
+        $destination2 = 'images/posts/'.$detail->postDetail->imagedua;
+        if (File::exists($destination2))
+            {
+                File::delete($destination2);
+            }
+        $uploadImage = $request->file('imagedua');
+        $imageNameWithExt = $uploadImage->getClientOriginalName();
+        $imageName = pathinfo($imageNameWithExt, PATHINFO_FILENAME);
+        // dd($imageName);
+        $imageExt = $uploadImage->getClientOriginalExtension();
+        $getImage = $imageName . time() . "." . $imageExt;
+        $request->imagedua->move(public_path('images/posts'), $getImage);
+
+        $destination3 = 'images/posts/'.$detail->postDetail->imagetiga;
+        if (File::exists($destination3))
+            {
+                File::delete($destination3);
+            }
+        $uploadImage = $request->file('imagetiga');
+        $imageNameWithExt = $uploadImage->getClientOriginalName();
+        $imageName = pathinfo($imageNameWithExt, PATHINFO_FILENAME);
+        // dd($imageName);
+        $imageExt = $uploadImage->getClientOriginalExtension();
+        $putImage = $imageName . time() . "." . $imageExt;
+        $request->imagetiga->move(public_path('images/posts'), $putImage);
+
+        $destination4 = 'images/posts/'.$detail->postDetail->imageempat;
+        if (File::exists($destination4))
+            {
+                File::delete($destination4);
+            }
+        $uploadImage = $request->file('imageempat');
+        $imageNameWithExt = $uploadImage->getClientOriginalName();
+        $imageName = pathinfo($imageNameWithExt, PATHINFO_FILENAME);
+        // dd($imageName);
+        $imageExt = $uploadImage->getClientOriginalExtension();
+        $insertImage = $imageName . time() . "." . $imageExt;
+        $request->imageempat->move(public_path('images/posts'), $insertImage);
+
+
+
         $detail->postDetail()->update([
             'imagesatu' => $storeImage,
-            'postjudul' => $request->postjudul,
-            'postcaption' => $request->postcaption,
-            'harga' => $request->harga,
-            'map' => $request->map,
+            'imagedua' => $getImage,
+            'imagetiga' => $putImage,
+            'imageempat' => $insertImage,
         ]);
 
-        return redirect()->route('detail.dashboard')->with('message', 'Edit data detail post berhasil');
+        return redirect()->route('detail.dashboard')->with('message', 'Edit data Gambar detail post berhasil');
     }
-
 }

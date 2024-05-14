@@ -65,6 +65,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}/editpost', 'editpost')->name('editpost');
         Route::put('/{id}/editpost', 'updatepost')->name('updatepost');
 
+        Route::get('/{id}/editpostgambar', 'editpostgambar')->name('editpostgambar');
+        Route::put('/{id}/editpostgambar', 'updatepostgambar')->name('updatepostgambar');
+
         Route::delete('/{id}', 'delete')->name('delete');
     });
 
